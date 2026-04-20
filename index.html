@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users — Swagger API</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="site-title">Team directory</h1>
+        <p class="site-subtitle">
+          Data from
+          <a
+            href="https://swagger-api-2.onrender.com/users"
+            target="_blank"
+            rel="noopener noreferrer"
+            >swagger-api-2.onrender.com/users</a
+          >
+          — add and edit users via the API
+        </p>
+        <p class="dev-hint">
+          Run locally with:
+          <code>npm run dev</code>
+          then open
+          <code>http://localhost:5173</code>
+          (do not use <code>file://</code> for API calls.)
+        </p>
+      </div>
+    </header>
+
+    <main class="main">
+      <p
+        id="action-feedback"
+        class="action-feedback"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <section
+        id="state-loading"
+        class="state state--loading"
+        hidden
+        aria-busy="true"
+        aria-live="polite"
+      >
+        <p class="state__title">Loading users…</p>
+      </section>
+
+      <section
+        id="state-error"
+        class="state state--error"
+        hidden
+        role="alert"
+        aria-live="assertive"
+      >
+        <p class="state__title" id="error-message"></p>
+        <button type="button" class="btn" id="retry-btn">Try again</button>
+      </section>
+
+      <section id="state-success" class="state state--success" hidden>
+        <p class="state__summary" id="success-summary"></p>
+
+        <section class="panel panel--add" aria-labelledby="add-user-heading">
+          <h2 id="add-user-heading" class="panel__title">Add new user</h2>
+          <p class="panel__hint">
+            Skills: comma-separated (e.g. <code>Node.js, React</code>). The API
+            saves JSON to MongoDB.
+          </p>
+          <form id="add-user-form" class="form-grid">
+            <label class="field">
+              <span class="field__label">Name *</span>
+              <input name="name" type="text" required autocomplete="name" />
+            </label>
+            <label class="field">
+              <span class="field__label">Age</span>
+              <input name="age" type="number" min="0" max="150" />
+            </label>
+            <label class="field field--checkbox">
+              <input name="isActive" type="checkbox" checked />
+              <span class="field__label">Active</span>
+            </label>
+            <label class="field">
+              <span class="field__label">City</span>
+              <input name="city" type="text" autocomplete="address-level2" />
+            </label>
+            <label class="field">
+              <span class="field__label">Pincode</span>
+              <input name="pincode" type="number" min="0" />
+            </label>
+            <label class="field field--wide">
+              <span class="field__label">Skills (comma-separated)</span>
+              <input
+                name="skills"
+                type="text"
+                placeholder="e.g. Node.js, React"
+              />
+            </label>
+            <label class="field field--wide">
+              <span class="field__label">Bio</span>
+              <textarea name="bio" rows="2" placeholder="Short bio"></textarea>
+            </label>
+            <label class="field field--wide">
+              <span class="field__label">Image URL</span>
+              <input name="image" type="url" placeholder="https://…" />
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="btn">Add user</button>
+            </div>
+          </form>
+        </section>
+
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Active</th>
+                <th scope="col">City</th>
+                <th scope="col">Pincode</th>
+                <th scope="col">Skills</th>
+                <th scope="col">Bio</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/script.js" defer></script>
+  </body>
+</html>

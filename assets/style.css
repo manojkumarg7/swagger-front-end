@@ -1,0 +1,385 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f1419;
+  --surface: #1a222d;
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #e8edf4;
+  --muted: #8b9cb3;
+  --accent: #3d9cf0;
+  --error: #f87171;
+  --success: #34c759;
+  --radius: 12px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--bg);
+  background-image: radial-gradient(
+    ellipse 120% 80% at 50% -15%,
+    rgba(61, 156, 240, 0.12),
+    transparent 50%
+  );
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-size: 0.88em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.site-header {
+  padding: 2rem 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.site-title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.45rem, 4vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.site-subtitle {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.dev-hint {
+  margin: 0;
+  max-width: 52rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+/* States: loading, error, success */
+.state {
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem;
+}
+
+.state--loading {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.state--error {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: var(--text);
+}
+
+.state--error .state__title {
+  color: #fecaca;
+  margin: 0 0 1rem;
+  max-width: 48rem;
+}
+
+.state--success .state__summary {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.state__title {
+  margin: 0;
+}
+
+.btn {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: rgba(61, 156, 240, 0.15);
+  color: var(--accent);
+}
+
+.btn:hover {
+  background: rgba(61, 156, 240, 0.28);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Table */
+.table-scroll {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.data-table th {
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cell-thumb {
+  width: 52px;
+}
+
+.thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  background: #111820;
+}
+
+.cell-active-yes {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.cell-active-no {
+  color: var(--muted);
+}
+
+.cell-skills {
+  max-width: 12rem;
+}
+
+.cell-bio {
+  max-width: 18rem;
+}
+
+.cell-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem !important;
+}
+
+@media (max-width: 900px) {
+  .cell-bio {
+    max-width: 14rem;
+  }
+}
+
+/* Feedback + add form */
+.action-feedback {
+  min-height: 1.35rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: var(--success);
+}
+
+.action-feedback--error {
+  color: var(--error);
+}
+
+.panel {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.panel--add .panel__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.panel__hint {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.85rem 1rem;
+  align-items: end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field--wide {
+  grid-column: 1 / -1;
+}
+
+.field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.field input,
+.field textarea {
+  font: inherit;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 2.75rem;
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.btn--secondary {
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+}
+
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+.btn--danger {
+  border-color: rgba(248, 113, 113, 0.45);
+  background: rgba(248, 113, 113, 0.12);
+  color: #fecaca;
+}
+
+.btn--danger:hover {
+  background: rgba(248, 113, 113, 0.24);
+  color: #fff;
+}
+
+.btn--small {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.82rem;
+}
+
+.cell-actions {
+  white-space: nowrap;
+}
+
+.cell-actions--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: stretch;
+}
+
+.cell-actions--row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.tr--editing td {
+  background: rgba(61, 156, 240, 0.06);
+}
+
+.input {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  padding: 0.35rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text);
+}
+
+.input--compact {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.input--textarea {
+  resize: vertical;
+  min-height: 3rem;
+}
+
+.cell-thumb--edit {
+  min-width: 7rem;
+}
+
+.check-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
