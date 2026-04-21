@@ -9,7 +9,8 @@
  * Run: npm run dev → http://localhost:5173
  */
 
-const API_URL = "http://localhost:3000/users";
+const API_URL = " https://swagger-api-2.onrender.com/users";
+// const API_URL = "http://localhost:3000/users";
 
 const loadingEl = document.getElementById("state-loading");
 const errorEl = document.getElementById("state-error");
